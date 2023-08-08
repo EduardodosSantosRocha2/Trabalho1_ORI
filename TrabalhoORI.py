@@ -3,8 +3,11 @@ import nltk
 #nltk.download('stopwords')
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from nltk.stem import SnowballStemmer as snS
 
 stop_words = stopwords.words('portuguese');
+stemmer = snS('portuguese')
+
 stop_words.append(",");
 stop_words.append(':');
 stop_words.append('.');
@@ -40,24 +43,12 @@ def removerStopWords(lista):
     lista_aux = [palavra for palavra in lista if palavra.lower() not in stop_words] #List comprehension
     return lista_aux
 
+def Stemizar(lista):
+    lista_stemizada = [stemmer.stem(palavra) for palavra in lista]
+    return lista_stemizada
 
 
 
-lerPDF(lista1,0);
-lerPDF(lista2,1);
-lerPDF(lista3,2);
-lerPDF(lista4,3);
-lerPDF(lista5,4);
-lerPDF(lista6,5);
-lerPDF(lista7, 6);
-lista1 = removerStopWords(lista1);
-lista2 = removerStopWords(lista2);
-lista3 = removerStopWords(lista3);
-lista4 = removerStopWords(lista4);
-lista5 = removerStopWords(lista5);
-lista6 = removerStopWords(lista6);
-lista7 = removerStopWords(lista7);
-print(lista2)
 
 
 
