@@ -21,6 +21,8 @@ stop_words.append('oh');
 stop_words.append('…');
 stop_words.append('?');
 
+cont = 0;
+
 
 
 
@@ -44,13 +46,30 @@ def lerPDF(lista, pos):
     palavras = word_tokenize(texto);
     geradordelista(lista, palavras);
 
-def removerStopWords(lista):
+def removerStopWords(lista, type):
+    print(f"Palavras antes de removerStopWord lista{type}: \n")
+    for palavra in lista:
+        print(palavra)
     lista_aux = [palavra for palavra in lista if palavra.lower() not in stop_words] #List comprehension
     return lista_aux
 
-def Stemizar(lista):
+def printarStopWords(lista, type):
+    print(f"Palavras antes de removerStopWord lista{type}: \n")
+    for palavra in lista:
+        print(palavra)
+
+
+def Stemizar(lista, type):
+    print(f"Palavras antes da Stemizar as listas{type}: \n")
+    for palavra in lista:
+        print(palavra)
     lista_stemizada = [stemmer.stem(palavra) for palavra in lista]
     return lista_stemizada
+
+def printarStermizado(lista, type):
+    print(f"Palavras depois de Stemizar as listas{type}: \n")
+    for palavra in lista:
+        print(palavra)
 
 
 def IndiceIv(lists_of_words):
