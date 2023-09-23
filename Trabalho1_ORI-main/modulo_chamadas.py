@@ -1,5 +1,7 @@
 import TrabalhoORI as t
 
+escolhaMetodo = True;
+
 #Ler as palavras dos PDF
 t.lerPDF(t.lista1, 0);
 t.lista1.remove('uinhos')
@@ -19,6 +21,15 @@ for i in range(len(t.lista6) - 1):
 t.lerPDF(t.lista7, 6);
 
 t.formatar_palavra(t.lista6, 'água', 'agua');#Atualiza as palavras água, pois com acentuação a ordem alafabetica não funciona corretamente
+
+
+
+t.ld_values = [len(t.lista1), len(t.lista2), len(t.lista3), len(t.lista4), len(t.lista5), len(t.lista6),len(t.lista7)]
+t.lave = (len(t.lista1) + len(t.lista2) + len(t.lista3) + len(t.lista4) + len(t.lista5) + len(t.lista6) + len(t.lista7)) / 7
+
+
+
+
 
 
 
@@ -65,6 +76,7 @@ t.formatar_palavra(t.lista3, 'devagarinh', 'devagar');
 t.formatar_palavra(t.lista7, 'grandã', 'grand');
 t.formatar_palavra(t.lista5, 'amarelinh', 'amarel');
 t.formatar_palavra(t.lista2, 'bichinh', 'bich');
+t.formatar_palavra(t.lista3, 'menininh','menin')
 
 
 t.dicionario = t.lista1+ t.lista2 + t.lista3+ t.lista4 + t.lista5+  t.lista6 + t.lista7 # dicionario recebe as palavras stemizadas, juntando todas as listas
@@ -89,6 +101,45 @@ t.PrintDicionario(t.dicionario, t.antesDicionario); #Exibe o dicionario com a pa
 t.IndiceIv(t.listamae);#Gera Indice Invertido
 
 t.criar_pdf_com_lista_de_texto(t.listapalavraPDF); #gera PDF com indice Invertido
+
+
+while (escolhaMetodo):
+
+    print(t.cor_reset);
+    print("Digite 1 para usar o Modelo vetorial\nDigite 2 para usar o Modelos Probabilístico(BM25)\nDigite 0 para sair\n");
+    modelo = int(input("Qual sua escolha?\n"))  # Convertemos a entrada para um número inteiro
+
+    if modelo == 1:
+        t.idf = t.lerPDFIndice(0)
+
+        print("idf: ", end="")
+        print(t.idf)
+
+        print("wtf: ", end="")
+        print(t.wtf)
+
+        t.geradordeidfVSwtf()
+
+        t.escolhaPalavra()
+
+
+    elif modelo == 2:
+        t.idf = t.lerPDFIndice(0)
+
+        print("idf: ", end="")
+        print(t.idf)
+
+        print("wtf: ", end="")
+        print(t.wtf)
+
+        t.geradordeidfVSwtf()
+
+        t.BM25Palavra()
+
+    elif modelo == 0:
+        escolhaMetodo = False;
+
+
 
 
 
